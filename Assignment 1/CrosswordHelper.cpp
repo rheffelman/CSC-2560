@@ -25,8 +25,8 @@ void CrossWordHelper::getSuggestions(const string& word, IntersectionContainer <
         for (int i = 0; i < word.length(); i++){
             if (word[i] != '-'){
                 c.add(words[i][int(word[i]) - 97]);
+            }
         }
-    }
     }
 }
 //--
