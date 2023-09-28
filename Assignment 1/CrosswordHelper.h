@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <cassert>
 #include <vector>
 #include <fstream>
 #include "SafeArray.h"

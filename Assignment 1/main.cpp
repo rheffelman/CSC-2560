@@ -7,9 +7,9 @@
 #include "SafeArrayException.h"
 
 using namespace std;
-void printSuggestions(IntersectionContainer < string >& a, const string& b);
+
 int main(){
-    string word = "-o-a-o";
+    string word = "c----";
     CrossWordHelper b("C:\\Users\\ryanh\\OneDrive\\Documents\\GitHub\\CSC-2560\\Assignment 1\\bigDictionary.txt", word.length());
     IntersectionContainer < string > c;
     b.getSuggestions(word, c);

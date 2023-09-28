@@ -2,7 +2,7 @@
 #include <string>
 #include "SafeArrayException.h"
 using namespace std;
-template < class T >
+template < typename T >
 
 class SafeArray{
 public:
@@ -12,6 +12,7 @@ int totalSize = 10;
 //--
 ~SafeArray(){
     delete[] allVals;
+    allVals = NULL;
 }
 //--
 void resize(int newSize){

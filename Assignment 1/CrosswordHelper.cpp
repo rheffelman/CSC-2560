@@ -14,6 +14,7 @@ CrossWordHelper::CrossWordHelper(const string& filePath, int wordLength){
 
         for (int i = 0; i < wordLength; i++){
             if (word.length() == wordLength){
+                assert (tolower(word[i]) >- 97 and tolower(word[i]) <= 97 + 26);
                 words[i][int(tolower(word[i])) - 97].push_back(word);
             }
         }
