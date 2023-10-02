@@ -14,21 +14,17 @@ int main(){
     vector < string > allWords;
     vector < string > viableWords;
     readIn(allWords, 5);
-    int ar[26] {0};
-
+    
     for (int i = 0; i < allWords.size(); i++){
-        ar[int(allWords[i][4]) - 97]++;
-    }
+        if (look(allWords[i], 't') and look(allWords[i], 'r') and look(allWords[i], 'e')){
+            if (allWords[i][1] != 't' and allWords[i][3] != 'r' and allWords[i][4] != 'e'){
+                if (!look(allWords[i], 's') and !look(allWords[i], 'e')){
+                    printf("%s\n", allWords[i].c_str());
+                }
 
-    ofstream outfile;
-    outfile.open("letter frequency.txt");
-    for (int i = 0; i < 26; i++){
-        outfile << ar[i] << ", ";
+            }
+        }
     }
-
-    // string grey = "";
-    // string green = "";
-    // string yellow = "";
 }
 //--
 // bool yellowCheck(string word, string yellow){
@@ -39,23 +35,23 @@ int main(){
 //     }
 // }
 //--
-bool greenCheck(string word, string green){
-    for (int i = 0; i < green.length(); i++){
-        if (green[i] != '-'){
-            if (word[i] != green[i]) return false;
-        }
-    }
-    return true;
-}
-//--
-bool greyCheck(string word, string grey){
-    for (int i = 0; i < word.length(); i++){
-        for (int j = 0; j < grey.length(); j++){
-            if (word[i] == grey[j]) return false;
-        }
-    }
-    return true;
-}
+// bool greenCheck(string word, string green){
+//     for (int i = 0; i < green.length(); i++){
+//         if (green[i] != '-'){
+//             if (word[i] != green[i]) return false;
+//         }
+//     }
+//     return true;
+// }
+// //--
+// bool greyCheck(string word, string grey){
+//     for (int i = 0; i < word.length(); i++){
+//         for (int j = 0; j < grey.length(); j++){
+//             if (word[i] == grey[j]) return false;
+//         }
+//     }
+//     return true;
+// }
 //--
 bool look(string word, char c){
     for (int i = 0; i < word.length(); i++){
