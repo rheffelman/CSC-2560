@@ -13,6 +13,7 @@
 				"SafeArrayException.cpp",
 				"Tracker.cpp",
 				"Cell.cpp",
+				"StackError.cpp",
 				"-o",
 				"${fileDirname}\\${fileBasenameNoExtension}.exe"
 			],

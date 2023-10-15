@@ -1,13 +1,16 @@
 #include "SafeArrayException.h"
 
-SafeArrayException::SafeArrayException(string str){
+SafeArrayException::SafeArrayException(string str)
+{
     setStr(str);
 }
 //--
-string SafeArrayException::getStr(){
+string SafeArrayException::getStr()
+{
     return errorMessage;
 }
 //--
-void SafeArrayException::setStr(string str){
+void SafeArrayException::setStr(string str)
+{
     errorMessage = str;
 }

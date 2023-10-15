@@ -1,6 +1,7 @@
 #pragma once
 
-class Cell{
+class Cell
+{
 public:
 
     int getRow() const;

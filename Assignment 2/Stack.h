@@ -5,14 +5,15 @@
 using namespace std;
 
 template < typename T >
-class Stack {
+class Stack
+{
 public:
 
     void push(const T& elem);
     T pop();
     T top();
     bool isEmpty() const;
-    int size();
+    int size() const;
 
 private:
 
@@ -20,27 +21,43 @@ private:
 
 };
 //--
-template<typename T>void Stack<T>::push(const T& elem){
+template<typename T>void Stack<T>::push(const T& elem)
+{
     list.insertAtRear(elem);
 }
 //--
-template<typename T>T Stack<T>::pop(){
+template<typename T>T Stack<T>::pop()
+{
+    if (isEmpty())
+    {
+        StackError er("You've tried to pop an empty stack...moron");
+        throw er;
+    }
+
     T elem;
     list.removeFromRear(elem);
     return elem;
 }
 //--
-template<typename T>T Stack<T>::top(){
+template<typename T>T Stack<T>::top()
+{
+    if (isEmpty())
+    {
+        StackError er("You've tried to top an empty stack... moron");
+        throw er;
+    }
+
     T elem;
     list.last(elem);
     return elem;
 }
 //--
-template<typename T>bool Stack<T>::isEmpty() const{
+template<typename T>bool Stack<T>::isEmpty() const
+{
     return (list.isEmpty());
 }
 //--
-template<typename T>int Stack<T>::size() {
+template<typename T>int Stack<T>::size() const
+{
     return list.size();
 }
-//--

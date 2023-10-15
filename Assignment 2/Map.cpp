@@ -97,7 +97,8 @@ Cell* Map::getStart()
         return NULL;
 }
 //--
-Cell* Map::getCell(int index){
+Cell* Map::getCell(int index)
+{
         if (index < 0 or index > allCells.size() - 1){
                 return NULL;
         }

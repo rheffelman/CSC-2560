@@ -2,16 +2,18 @@
 #include <string>
 #include "SafeArrayException.h"
 using namespace std;
-template < typename T >
 
+template < typename T >
 class SafeArray
 {
 public:
 
+    SafeArray();
+    SafeArray(const SafeArray& original);
+    ~SafeArray();
     int index = 0;
     T* allVals = new T[10];
     int totalSize = 10;
-    ~SafeArray();
     void resize(int newSize);
     void erase(int pos);
     void push_back(T newVal);
@@ -27,19 +29,41 @@ private:
 
 };
 //--
-template < typename T >SafeArray<T>::~SafeArray(){
+template < typename T >SafeArray<T>::SafeArray()
+{
+    index = 0;
+    allVals = new T[10];
+    totalSize = 10;
+}
+//--
+template < typename T >SafeArray<T>::SafeArray(const SafeArray& original)
+{
+    index = original.index;
+    totalSize = original.totalSize;
+    allVals = new T[totalSize];
+
+    for (int i = 0; i < index + 1; i++)
+    {
+        allVals[i] = original.allVals[i];
+    }
+}
+//--
+template < typename T >SafeArray<T>::~SafeArray()
+{
     delete[] allVals;
     allVals = NULL;
 }
 //--
-template < typename T >void SafeArray<T>::resize(int newSize){
+template < typename T >void SafeArray<T>::resize(int newSize)
+{
     delete[] allVals;
     T* newAr = new T[newSize * 2];
     index = newSize;
     allVals = newAr;
 }
 //--
-template < typename T >void SafeArray<T>::erase(int pos){
+template < typename T >void SafeArray<T>::erase(int pos)
+{
     T* newAr = new T[totalSize];
     for (int i = 0; i < (totalSize/2); i++){
         if (i != pos) newAr[i] = allVals[i];
@@ -49,13 +73,15 @@ template < typename T >void SafeArray<T>::erase(int pos){
     pop_back();
 }
 //--
-template < typename T >void SafeArray<T>::push_back(T newVal){
+template < typename T >void SafeArray<T>::push_back(T newVal)
+{
     if (index == totalSize - 1) doubleAr();
     allVals[index] = newVal;
     index++;
 }
 //--
-template < typename T >void SafeArray<T>::pop_back(){
+template < typename T >void SafeArray<T>::pop_back()
+{
     if(index == 0) {
     SafeArrayException ex("Nothing to pop back!");
     throw ex;
@@ -64,11 +90,13 @@ template < typename T >void SafeArray<T>::pop_back(){
     index--;
 }
 //--
-template < typename T >int SafeArray<T>::size(){
+template < typename T >int SafeArray<T>::size()
+{
      return index;
 }
 //--
-template < typename T >T& SafeArray<T>::at(int pos){
+template < typename T >T& SafeArray<T>::at(int pos)
+{
     if (pos > index - 1 or pos < 0){
         SafeArrayException ex("Out of Bounds!");
         printf("%s\n", ex.getStr());
@@ -77,11 +105,13 @@ template < typename T >T& SafeArray<T>::at(int pos){
     return allVals[pos];
 }
 //--
-template < typename T >T& SafeArray<T>::operator[](int pos){
+template < typename T >T& SafeArray<T>::operator[](int pos)
+{
     return at(pos);
 }
 //--
-template < typename T >void SafeArray<T>::doubleAr(){
+template < typename T >void SafeArray<T>::doubleAr()
+{
     totalSize *= 2;
     T* newAr = new T[totalSize];
     for (int i = 0; i < (totalSize/2); i++) newAr[i] = allVals[i];
@@ -89,7 +119,8 @@ template < typename T >void SafeArray<T>::doubleAr(){
     allVals = newAr; 
 }
 //--
-template < typename T >void SafeArray<T>::halveAr(){
+template < typename T >void SafeArray<T>::halveAr()
+{
     totalSize /= 2;
     T* newAr = new T[totalSize];
     for (int i = 0; i < index; i++) newAr[i] = allVals[i];
