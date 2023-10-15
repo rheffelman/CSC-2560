@@ -11,9 +11,9 @@ public:
     SafeArray();
     SafeArray(const SafeArray& original);
     ~SafeArray();
-    int index = 0;
-    T* allVals = new T[10];
-    int totalSize = 10;
+    int index;
+    T* allVals;
+    int totalSize;
     void resize(int newSize);
     void erase(int pos);
     void push_back(T newVal);
