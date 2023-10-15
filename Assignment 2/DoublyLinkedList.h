@@ -5,6 +5,7 @@ using namespace std;
 template < typename T >
 class DoublyLinkedList{
 public:
+
     DoublyLinkedList();
     DoublyLinkedList(const DoublyLinkedList& x);
     ~DoublyLinkedList();
@@ -23,6 +24,7 @@ public:
     bool find(const T& elem);
     T& at(int pos);
     T& operator[](int pos);
+    
 private:
     struct Node{
         T data;

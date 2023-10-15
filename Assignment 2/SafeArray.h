@@ -19,6 +19,9 @@ public:
     int size();
     T& at(int pos);
     T& operator[](int pos);
+    
+private:
+
     void doubleAr();
     void halveAr();
 
