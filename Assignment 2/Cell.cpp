@@ -49,8 +49,10 @@ char Cell::getCellType() const
 //--
 void Cell::setCellType(char x)
 {
-    if (int(x) )
-    cellType = x;
+    if (int(x)) // now, I could tolerate one line but that was NOT OK
+    {
+        cellType = x;
+    }
 }
 
 //--
