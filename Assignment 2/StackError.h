@@ -6,9 +6,9 @@ class StackError
 {
 public:
 
-    StackError(string str);
+    StackError(const string& str); // use explicit return type
     string getStr();
-    void setStr(string str);
+    void setStr(const string& str);
 
 private:
 
