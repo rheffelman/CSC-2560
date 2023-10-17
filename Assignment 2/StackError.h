@@ -6,7 +6,7 @@ class StackError
 {
 public:
 
-    StackError(const string& str); // use explicit return type
+    StackError(const string& str);
     string getStr();
     void setStr(const string& str);
 
