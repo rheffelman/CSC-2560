@@ -7,6 +7,7 @@
 #include "SafeArray.h"
 using namespace std;
 
+// Um, should you uncomment the other main function?
 int main(){
     SafeArray <int> s;
     for (int i = 0; i < 10; i++) s.push_back(i);
