@@ -11,7 +11,7 @@ public:
     SafeArray();
     SafeArray(const SafeArray& original);
     ~SafeArray();
-    int index;
+    int index; //nit: typically all members of the class would be listed after functions, also typically those are private, and we use getters. It may not make sense here, but it helps to debug code in multithreded environment when you don't know who and when is reading data. Same with setters.
     T* allVals;
     int totalSize;
     void resize(int newSize);
@@ -32,7 +32,7 @@ private:
 template < typename T >SafeArray<T>::SafeArray()
 {
     index = 0;
-    allVals = new T[10];
+    allVals = new T[10]; // nit: why not assign totalSize first and then use it here instead of hardcode 10 that you have to change twice. It's clear to you that it's the same thing but not to every reader in the future after your code is butchered many times. Just good to build good habits when you can.
     totalSize = 10;
 }
 //--
@@ -82,10 +82,11 @@ template < typename T >void SafeArray<T>::push_back(T newVal)
 //--
 template < typename T >void SafeArray<T>::pop_back()
 {
-    if(index == 0) {
-    SafeArrayException ex("Nothing to pop back!");
-    throw ex;
+    if(index == 0) { //nit: though it won't be a problem here - single threaded environment, but it's best to do <=. Just little things that will save you tons of time of hair pulling in the future. Imagine two threads calling pop_back at the same time, your index might actually become -1. but it's outside of the scope of this project.
+        SafeArrayException ex("Nothing to pop back!");
+        throw ex;
     }
+    
     if (index == totalSize / 4) halveAr();
     index--;
 }
@@ -114,7 +115,10 @@ template < typename T >void SafeArray<T>::doubleAr()
 {
     totalSize *= 2;
     T* newAr = new T[totalSize];
-    for (int i = 0; i < (totalSize/2); i++) newAr[i] = allVals[i];
+    for (int i = 0; i < (totalSize/2); i++)
+    { //nit: it will cause less problems in the future. I know it seems like saving vertical space and no big deal, but code blocks do help and make you look more experience....it means you already felt the pain of dealing with situations like this.
+        newAr[i] = allVals[i];
+    }
     delete[] allVals;
     allVals = newAr; 
 }
