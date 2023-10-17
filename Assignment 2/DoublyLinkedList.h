@@ -70,6 +70,7 @@ template < typename T >DoublyLinkedList<T>::~DoublyLinkedList()
 template < typename T >void DoublyLinkedList<T>::insertAtFront(const T& elem)
 {
     Node* p_temp = new Node;
+    assert(p_temp && "Failure to create Node"); //nit: you will see at least this in professional code. Helps debugging weird issues with memory.
     p_temp->data = elem;
     p_temp->p_prev = NULL;
 
@@ -84,6 +85,7 @@ template < typename T >void DoublyLinkedList<T>::insertAtFront(const T& elem)
     {
         p_temp->p_next = p_head;
         p_head = p_temp;
+        assert(p_head->p_next && "Next element is expected"); //nit: highly encourage checking for null when dealing with pointers at least with asserts....will save you ton of time, and engineers will keep nagging you about this stuff. Remember when I read someone's code, I see it through - I-will-have=to=debug=this-one-day lens.
         p_head->p_next->p_prev = p_head;
     }
 
@@ -237,7 +239,7 @@ template < typename T >bool DoublyLinkedList<T>::first(T& elem)
     {
         retVal = true;
         elem = p_head->data;
-            p_current = p_head;
+        p_current = p_head;
     }
     return retVal;
 }
