@@ -6,7 +6,7 @@ class SafeArrayException
 {
 public:
 
-    SafeArrayException(string str);
+    SafeArrayException(const string& str); //same const string& but whatever - your code your rules
     string getStr();
     void setStr(string str);
 
