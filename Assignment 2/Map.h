@@ -27,8 +27,8 @@ public:
     Cell* getNorthWest(Cell* p_cell);
     Cell* getStart();
     Cell* getCell(int index);
-    bool isFree(Cell* c);
-    Cell* getIfFree(Cell* c);
+    bool isFree(const Cell* c); //when I don't see const, I read it as data will be modified, so typically we add const to indicate that it's input data, and it won't be modified.
+    Cell* getIfFree(const Cell* c);
 
 private:
 
