@@ -9,10 +9,10 @@ void Tracker::findPath(Map* map)
 
     for (;c->getCellType() != 'E';)
     {
-        bool ar[8] {(map->getNorth(c) != NULL), (map->getNorthEast(c) != NULL), (map->getEast(c) != NULL), (map->getSouthEast(c) != NULL), (map->getSouth(c) != NULL), (map->getSouthWest(c) != NULL), (map->getWest(c) != NULL), (map->getNorthWest(c) != NULL)};
+        bool ar[8] {map->getNorth(c) != NULL, map->getNorthEast(c) != NULL, map->getEast(c) != NULL, map->getSouthEast(c) != NULL, map->getSouth(c) != NULL, map->getSouthWest(c) != NULL, map->getWest(c) != NULL, map->getNorthWest(c) != NULL}; //nit: no need for round brackerts
         Cell* ar2[8] {map->getNorth(c), map->getNorthEast(c), map->getEast(c), map->getSouthEast(c), map->getSouth(c), map->getSouthWest(c), map->getWest(c), map->getNorthWest(c)};
         string ar3[8] {"North", "Northeast", "East", "Southeast", "South", "Southwest", "West", "Northwest"};
-        bool check = false;
+        bool check = false; //nit: a more descriptive name would be nice
 
         for (int i = 0; i < 8; i++)
         {
@@ -27,6 +27,7 @@ void Tracker::findPath(Map* map)
                 break;
             }
         }
+        
         if (!check)
         {
             c->setOnPath(false);
