@@ -2,7 +2,6 @@
 #include <string>
 #include <iostream>
 using namespace std;
-
 template < typename T >
 class DoublyLinkedList
 {
@@ -331,3 +330,25 @@ template < typename T >T& DoublyLinkedList<T>::operator[](int pos)
 {
     return at(pos);
 }
+
+/*
+-insert
+    O(1) if inserting at the head or the tail
+    O(n) if inserting in middle
+
+-retrieve
+    O(1) if retrieving at head or tail
+    O(n) if retrieving in middle
+
+-remove
+    O(1) if removing at head or tail
+    O(n) if removing in middle
+
+
+LinkedList is a good choice when:
+    1. you have memory constraints
+    2. order does not matter
+    3. you're working a lot with the head/tail
+
+
+*/

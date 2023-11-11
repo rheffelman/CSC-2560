@@ -2,13 +2,13 @@
 #include <string>
 #include "SafeArrayException.h"
 using namespace std;
-
 template < typename T >
 class SafeArray
 {
 public:
 
     SafeArray();
+    SafeArray(int val); // constructs SafeArray of a given size (val)
     SafeArray(const SafeArray& original);
     ~SafeArray();
     void resize(int newSize);
@@ -33,6 +33,13 @@ template < typename T >SafeArray<T>::SafeArray()
 {
     index = 0;
     totalSize = 10;
+    allVals = new T[totalSize];
+}
+//--
+template < typename T >SafeArray<T>::SafeArray(int val)
+{
+    index = 0;
+    totalSize = val;
     allVals = new T[totalSize];
 }
 //--
@@ -131,3 +138,17 @@ template < typename T >void SafeArray<T>::halveAr()
     delete[] allVals;
     allVals = newAr;
 }
+
+/*
+-insert
+    O(1) if not full
+    O(n) if full and inserting in the middle
+
+-retrieve
+    O(1) if you know the index
+    O(n) if you don't know the index
+
+-remove
+    O(1) if removing from the end
+    O(n) if removing from the end
+*/
