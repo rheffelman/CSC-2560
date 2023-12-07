@@ -14,7 +14,7 @@ public:
     void insertAtFront(const T& elem);
     void insertAtRear(const T& elem);
     bool removeFromFront (T& elem);
-    bool removeFromRear(T& elem);
+    bool removeFromRear();
     bool remove();
     bool remove(const T& elem);
     bool first(T& elem);
@@ -22,6 +22,7 @@ public:
     bool next(T& elem);
     bool previous(T& elem);
     int size() const;
+    void printList();
     bool isEmpty() const;
     bool find(const T& elem);
     T& at(int pos);
@@ -68,6 +69,19 @@ template < typename T >DoublyLinkedList<T>::~DoublyLinkedList()
         delete p_temp;                                      
         numElements--;
     }
+}
+//--
+template < typename T >void DoublyLinkedList<T>::printList()
+{
+    p_current = p_head;
+    Node* a = p_head;
+
+    for (;a;)
+    {
+        cout<<a->data<<" ";
+        a = a->p_next;
+    }
+    cout << endl;
 }
 //--
 template < typename T >void DoublyLinkedList<T>::insertAtFront(const T& elem)
@@ -144,7 +158,7 @@ template < typename T >bool DoublyLinkedList<T>::removeFromFront(T& elem)
     return true;
 }
 //--
-template < typename T >bool DoublyLinkedList<T>::removeFromRear(T& elem)
+template < typename T >bool DoublyLinkedList<T>::removeFromRear()
 {
     Node* p_temp;
 
@@ -155,7 +169,7 @@ template < typename T >bool DoublyLinkedList<T>::removeFromRear(T& elem)
 
     if (p_tail == p_head)
     {
-        elem = p_tail->data;
+        //elem = p_tail->data;
         delete p_tail;
         p_current = NULL;
         p_tail = NULL;
@@ -167,7 +181,7 @@ template < typename T >bool DoublyLinkedList<T>::removeFromRear(T& elem)
     p_temp = p_tail;
     p_tail = p_temp->p_prev;
     p_tail->p_next = NULL;
-    elem = p_temp->data;
+    //elem = p_temp->data;
     delete p_temp;
     numElements--;
     return true;

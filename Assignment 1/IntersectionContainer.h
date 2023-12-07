@@ -41,14 +41,7 @@ bool look(string d, char c){
 //--
 void printersection(){
     for (int i = 0; i < Intersection.size(); i++){
-        int count = 0;
-        for (int j = 0; j < 5; j++){
-            if (Intersection[i][j] == 'l') count++;
-            else if (Intersection[i][j] == 'o') count++;
-            else if (Intersection[i][j] == 'a') count++;
-            else if (Intersection[i][j] == 'r') count++;
-        }
-        if (count >= 4) cout << Intersection[i] << endl;
+        cout<<Intersection[i]<<endl;
     } 
 }
 private:

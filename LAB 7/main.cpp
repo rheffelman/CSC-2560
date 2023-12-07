@@ -2,16 +2,28 @@
 #include <string>
 using namespace std;
 
-void count(int x)
+void countDown(int x)
 {
-    cout << x << " ";
-    if (x < 5) count(x - 1);
+    if (x >= 0)
+    {
+        printf("%d\n", x); // prints the value of x (and a linebreak)
+        countDown(x - 1); // recurses with x = x - 1
+    }
+    else return;
+}
+
+void countUp(int x)
+{
+    if (x >= 0)
+    {
+        countUp(x - 1); // recurses with x = x - 1
+        printf("%d\n", x); // prints the value of x (and a linebreak)
+    }
+    else return;
 }
 
 int main()
 {
-    string s = "emily";
-    string y;
-    cin >> y;
-    if (y != s) main();
+    int x = 10;
+    countDown(x);
 }

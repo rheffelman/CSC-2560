@@ -22,7 +22,7 @@ Dictionary::Dictionary(const string& dictionaryPath)
     }
 }
 //--
-bool Dictionary::isWordPresent(string word)
+bool Dictionary::isWordPresent(const string& word)
 {
     return allWords.count(word);
 }

@@ -5,11 +5,10 @@
 #include <iostream>
 using namespace std;
 
-class Dictionary
-{
+class Dictionary{
 public:
     Dictionary(const string& dictionaryPath);
-    bool isWordPresent(string word);
+    bool isWordPresent(const string& word);
 private:
     unordered_set < string > allWords;
 };

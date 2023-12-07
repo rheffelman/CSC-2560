@@ -13,18 +13,20 @@ public:
     T top();
     bool isEmpty() const;
     int size() const;
-    int sum = 0;
-
+    void printList();
+    DoublyLinkedList <T> list;
 private:
 
-    DoublyLinkedList <T> list;
-    Dictionary* d;
 };
+//--
+template<typename T>void Stack<T>::printList()
+{
+    list.printList();
+}
 //--
 template<typename T>void Stack<T>::push(const T& elem)
 {
     list.insertAtRear(elem);
-    sum += elem.size();
 }
 //--
 template<typename T>T Stack<T>::pop()
