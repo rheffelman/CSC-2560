@@ -52,41 +52,15 @@ BoggleBoard::BoggleBoard(const string& pathToDictionary)
     }
 }
 //--
-void BoggleBoard::printBoard()
+BoggleBoard::~BoggleBoard()
 {
     for (int i = 0; i < 5; i++)
     {
         for (int j = 0; j < 5; j++)
         {
-            cout<<char(int(board[i][j]->text[0])-32)<<" ";
-        }
-        cout<<endl;
-    }
-}
-//--
-void BoggleBoard::printWords()
-{
-    int sum = 0;
-    
-    for (int i = 0; i < 25; i++)
-    {
-        if (foundWords[i].size())
-        {
-            sum += foundWords[i].size();
-            cout<<i+4<<" Letter Words: \n";
-
-            for (auto j : foundWords[i])
-            {
-                for (int k = 0; k < j.length(); k++)
-                {
-                    cout<<char(int(j[k])-32);
-                }
-                cout<<endl;
-            }
-            cout<<endl;
+            delete board[i][j];
         }
     }
-    cout<<"I found "<<sum<<" words!\n";
 }
 //--
 void BoggleBoard::solve()
@@ -125,6 +99,44 @@ void BoggleBoard::solveHelper(Die* d, TrieElement* c, unordered_set < Die* > tra
         }
     }
     return;
+}
+//--
+void BoggleBoard::printBoard()
+{
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            cout<<char(int(board[i][j]->text[0])-32)<<" ";
+        }
+        cout<<endl;
+    }
+}
+//--
+void BoggleBoard::printWords()
+{
+    int sum = 0;
+
+    for (int i = 0; i < 25; i++)
+    {
+        if (foundWords[i].size())
+        {
+            sum += foundWords[i].size();
+            cout<<i+4<<" Letter Words: \n";
+
+            for (auto j : foundWords[i])
+            {
+                
+                for (int k = 0; k < j.length(); k++)
+                {
+                    cout<<char(int(j[k])-32);
+                }
+                cout<<endl;
+            }
+            cout<<endl;
+        }
+    }
+    cout<<"I found "<<sum<<" words!\n";
 }
 //--
 /* this method traverses from a point c on the trie through the text on a given die d.

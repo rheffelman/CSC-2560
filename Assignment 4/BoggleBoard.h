@@ -21,6 +21,7 @@ public:
     };
     
     BoggleBoard(const string& pathToDictionary);
+    ~BoggleBoard();
     void printBoard();
     void solve();
     
