@@ -5,7 +5,6 @@
 #include <iostream>
 #include <cassert>
 using namespace std;
-typedef TrieElement Node;
 
 class Trie
 {
@@ -18,9 +17,9 @@ public:
 private:
 
     string search(const string& word);
-    string searchHelper(const string& word, Node* c, int index);
+    string searchHelper(const string& word, TrieElement* c, int index);
     void printAllWords();
-    void printHelper(Node* c);
+    void printHelper(TrieElement* c);
     void insert(const string& elem, TrieElement* c, int elemIndex);
     string cleanse(const string& word);
     

@@ -6,6 +6,7 @@ Trie::Trie(const string& filepath)
     infile.open(filepath);
     string word;
     if (!infile.good()) cout<<"not good"<<endl;
+    
     for (;infile.good();)
     {
         infile>>word;
@@ -87,7 +88,7 @@ void Trie::printHelper(TrieElement* c)
         {
             if (c->subTries[i]->isCompletedWord)
             {
-                printf("%s\n", c->subTries[i]->wordSoFar.c_str());
+                cout<<c->subTries[i]->wordSoFar<<endl;
             }
             printHelper(c->subTries[i]);
         }
